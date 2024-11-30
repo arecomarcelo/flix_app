@@ -1,4 +1,6 @@
 import streamlit as st
+from st_aggrid import AgGrid
+import pandas as pd
 
 
 genres = [
@@ -18,7 +20,11 @@ genres = [
 def show_genres():
     st.write('Lista de Gêneros')
 
-    st.table(genres)
+    AgGrid(
+        data = pd.DataFrame(genres),
+        reload_data = True,
+        key='genres_grid',
+    )
 
     st.title('Cadastrar Novo Gênero')
     name = st.text_input('Nome do Gênero')

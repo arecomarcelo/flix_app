@@ -9,10 +9,7 @@ pip freeze
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
-django-admin startproject app .
-
-python3 manage.py startapp nome_app
-python3 manage.py runserver
+streamlit run app.py
 
 python3 manage.py makemigrations
 python3 manage.py migrate
