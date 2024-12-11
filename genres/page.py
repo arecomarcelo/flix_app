@@ -1,36 +1,36 @@
 import streamlit as st
 from st_aggrid import AgGrid
 import pandas as pd
+from genres.service import GenreService
 
 
-genres = [
-    {
-        'id': 1,
-        'name': 'Ação'
-    },
-    {
-        'id': 2,
-        'name': 'Comédia'
-    },
-    {
-        'id': 3,
-        'name': 'Terros'
-    },
-]
 def show_genres():
-    st.write('Lista de Gêneros')
+    genre_service = GenreService()
+    genres = genre_service.get_genres()
 
-    AgGrid(
-        data = pd.DataFrame(genres),
-        reload_data = True,
-        key='genres_grid',
-    )
+    if genres:
+        st.write('Lista de Gêneros')
+
+        genres_df = pd.json_normalize(genres)
+
+        AgGrid(
+            data = pd.DataFrame(genres_df),
+            reload_data = True,
+            key='genres_grid',
+            height= 250,
+        )
+    else:
+        st.warning('Nenhum Gênero Cadastrado!')
 
     st.title('Cadastrar Novo Gênero')
     name = st.text_input('Nome do Gênero')
     
     if st.button('Cadastrar'):
-        if name == 'Sexo':
-            st.error(f'O Gênero {name} não é Permitido!')
+        new_genre = genre_service.create_genres(
+                name=name,
+            )
+
+        if new_genre:
+            st.rerun()
         else:
-            st.success(f'Genêro {name} - Cadastrado com Sucesso!')
+            st.error('Erro ao Cadastrar o Gênero. Verifique os Dados!')

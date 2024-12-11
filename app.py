@@ -16,8 +16,7 @@ def main():
         
         menu_options = st.sidebar.selectbox(
             'Selecione uma Opção:',
-            ['',
-            'Início',
+            ['Início',
             'Gêneros',
             'Atores/Atrizes',
             'Filmes',

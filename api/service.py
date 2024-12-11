@@ -5,7 +5,7 @@ class Auth:
 
     def __init__(self):
         self.__base_url = 'https://areco.pythonanywhere.com/api/v1/'
-        self.__auth_url = f'{self.__base_url}authentication/token'
+        self.__auth_url = f'{self.__base_url}authentication/token/'
 
     def get_token(self, username, password):
         auth_payload = {
