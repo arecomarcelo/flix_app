@@ -4,6 +4,7 @@ from actors.page import show_actors
 from movies.page import show_movies
 from reviews.page import show_reviews
 from login.page import show_login
+from home.page import show_home
 
 
 def main():
@@ -25,7 +26,7 @@ def main():
         )
 
         if menu_options == 'Início':
-            st.write('Início')
+            show_home()
 
         if menu_options == 'Gêneros':
             show_genres()
