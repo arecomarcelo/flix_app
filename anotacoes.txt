@@ -18,3 +18,20 @@ python3 manage.py createsuperuser
 
 pip install flake8
 flake8
+
+Publicar:
+Acesse https://share.streamlit.io/ e faça login com sua conta GitHub
+Clique em "New app" e selecione:
+
+O repositório onde está seu código
+A branch (geralmente 'main' ou 'master')
+O arquivo principal do seu app
+
+
+Configure o deploy:
+
+Dê um nome ao seu app
+Escolha o Python version (recomendo usar a mais recente estável)
+Configure variáveis de ambiente se necessário
+
+link: https://flixapp-areco.streamlit.app/
